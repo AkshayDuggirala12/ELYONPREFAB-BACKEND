@@ -17,6 +17,9 @@ class Project(Base):
     location = Column(String)
     duration = Column(String) # e.g., "6 WKS"
     image_url = Column(String)
+    # ... your existing columns (title, location, duration, image_url)
+    video_url = Column(String, nullable=True)  # New!
+    description = Column(String, nullable=True) # New!
 
 # Matches the "Need a custom solution?" and "Get a Quote" forms
 class Lead(Base):

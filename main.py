@@ -50,6 +50,8 @@ class ProjectCreate(BaseModel):
     location: str
     duration: str
     image_url: str
+    video_url: str = None
+    description: str = None
 
 # Securely add a new project
 @app.post("/api/projects/")
@@ -64,7 +66,9 @@ def create_project(project: ProjectCreate, authorization: str = Header(default=N
         title=project.title,
         location=project.location,
         duration=project.duration,
-        image_url=project.image_url
+        image_url=project.image_url,
+        video_url=project.video_url,
+        description=project.description
     )
     db.add(new_project)
     db.commit()
