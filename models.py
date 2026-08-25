@@ -1,5 +1,6 @@
-from sqlalchemy import Column, Integer, String, Text
+from sqlalchemy import Column, Integer, String, Text, DateTime
 from database import Base
+import datetime
 
 # Matches the "Products" section (PEB, LGSF, Modular)
 class Product(Base):
@@ -24,10 +25,12 @@ class Project(Base):
 # Matches the "Need a custom solution?" and "Get a Quote" forms
 class Lead(Base):
     __tablename__ = "leads"
+
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String)
+    name = Column(String, index=True)
     phone = Column(String)
-    site_dimensions = Column(String) # From the custom solution form
-    intended_use = Column(String)
+    project_type = Column(String) # e.g., "Warehouse", "Labour Accommodation"
+    dimensions = Column(String)
     timeline = Column(String)
     message = Column(Text)
+    created_at = Column(DateTime, default=datetime.datetime.utcnow)

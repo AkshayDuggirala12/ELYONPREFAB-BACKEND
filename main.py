@@ -12,6 +12,7 @@ load_dotenv()
 
 
 # This automatically creates the tables in your elyon_db!
+models.Base.metadata.drop_all(bind=engine)   # ADD THIS LINE TO WIPE IT
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Elyon Prefab API")
